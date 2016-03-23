@@ -73,4 +73,27 @@ In your UITabBarController:<br />
 }
 ```
 
+#####Advanced Setup
+In your UITabBarController:<br />
+```objective-c
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    self.menuBackGroundColor = [UIColor whiteColor];
+    self.menuOverLayBackGroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.6];
+    self.menuItemBackGroundColor = [UIColor whiteColor];
+    self.menuItemSelectdBackGroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:0.5];
+    self.closeButtonText = @"LESS";
+    self.moreButtonText = @"MORE";
+    self.noOfTabsInRowForIPhone = 3;
+    self.noOfTabsInRowForIPad = 5;
+    self.menuItemHeight = 60;
+
+    [self setDelegate:self];
+    [self setUpTabBarForIndex:0]; //index of the tab you want to be selected
+    [self setupMenu];
+}
+```
+
+You can also customize the MRMenu.xib and MRMenuItem.xib for the styling, but dont mess with the outlets
