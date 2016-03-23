@@ -5,5 +5,18 @@ iOS provides "more" button when the number of tab items are more than 5 (8 for i
 
 This custom UITabBarController provides a elegent way of showing all the tab items in a multi row view, letting the user to switch between any screen any time.
 
+##Features
 
-![alt text](http://res.cloudinary.com/dm6lqaxjt/image/upload/v1458745277/MultiRow_Default_Columns_n4i2mc.gif "Default 5 tabs")         ![alt text](http://res.cloudinary.com/dm6lqaxjt/image/upload/v1458745277/MultiRow_custom_columns_zbhcmp.gif "Custom 3 tabs")
+- Universal device support (iPhone + iPad)
+- Multiple Storyboard support
+- Easily stylable
+- Nice set of configuration options
+- Lightweight, simple and readable code.
+
+
+![](http://res.cloudinary.com/dm6lqaxjt/image/upload/v1458745277/MultiRow_Default_Columns_n4i2mc.gif)  &nbsp;&nbsp;&nbsp;  ![](http://res.cloudinary.com/dm6lqaxjt/image/upload/v1458745277/MultiRow_custom_columns_zbhcmp.gif)
+
+
+##Installation
+
+####Manual Installation
