@@ -20,3 +20,57 @@ This custom UITabBarController provides a elegent way of showing all the tab ite
 ##Installation
 
 ####Manual Installation
+
+1. Download the zip
+2. Add the files under MultiRowTabBar into your project.
+3. Extend your UITabBarController from MultiRowTabBarController
+
+##Usage
+
+#####Basic Setup
+
+In your TabBarItems.plist, add an entry for each of the view controller you want to show up in tabs:<br />
+controllerId -> storyboardId for that controller <br />
+
+```plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <array>
+  	<dict>
+      <key>name</key>
+      <string>vc1</string>
+      <key>icon</key>
+      <string>nothing</string>
+      <key>storyboardName</key>
+      <string>Main</string>
+      <key>controllerId</key>
+      <string>vc1</string>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>vc2</string>
+      <key>icon</key>
+      <string>nothing</string>
+      <key>storyboardName</key>
+      <string>Main</string>
+      <key>controllerId</key>
+      <string>vc2</string>
+    </dict>
+  </array>
+</plist>
+```
+
+In your UITabBarController:<br />
+```objective-c
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self setDelegate:self];
+    [self setUpTabBarForIndex:0]; //index of the tab you want to be selected
+    [self setupMenu];
+}
+```
+
+
