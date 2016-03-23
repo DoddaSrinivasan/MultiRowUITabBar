@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="MRMenuItem">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZ0-jh-pEt">
+                    <rect key="frame" x="0.0" y="273" width="600" height="55"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CXb-Ua-vCT">
+                            <rect key="frame" x="288" y="8" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="YMD-fQ-L5i"/>
+                                <constraint firstAttribute="height" constant="25" id="oCn-rz-y3l"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRACK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bjo-Qf-SXU">
+                            <rect key="frame" x="0.0" y="38" width="600" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="X7Z-25-Zlq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
+                            <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Bjo-Qf-SXU" firstAttribute="leading" secondItem="FZ0-jh-pEt" secondAttribute="leading" id="EQU-VK-lPD"/>
+                        <constraint firstItem="CXb-Ua-vCT" firstAttribute="top" secondItem="FZ0-jh-pEt" secondAttribute="top" constant="8" id="GcB-KM-Yaj"/>
+                        <constraint firstItem="CXb-Ua-vCT" firstAttribute="centerX" secondItem="FZ0-jh-pEt" secondAttribute="centerX" id="XjY-lf-Xi2"/>
+                        <constraint firstAttribute="bottom" secondItem="Bjo-Qf-SXU" secondAttribute="bottom" constant="5" id="YKg-CV-xQY"/>
+                        <constraint firstAttribute="trailing" secondItem="Bjo-Qf-SXU" secondAttribute="trailing" id="ZKk-dL-tMN"/>
+                        <constraint firstAttribute="height" constant="55" id="p1k-ld-6C4"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zng-sq-Dm8">
+                    <rect key="frame" x="0.0" y="599" width="600" height="1"/>
+                    <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="RhG-Rr-BWH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="FZ0-jh-pEt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Dnh-fj-FsY"/>
+                <constraint firstAttribute="bottom" secondItem="Zng-sq-Dm8" secondAttribute="bottom" id="TiL-uq-Lgn"/>
+                <constraint firstItem="FZ0-jh-pEt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="VwL-md-ud6"/>
+                <constraint firstItem="Zng-sq-Dm8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tqt-iW-nHV"/>
+                <constraint firstAttribute="trailing" secondItem="FZ0-jh-pEt" secondAttribute="trailing" id="y83-iL-1LT"/>
+                <constraint firstAttribute="trailing" secondItem="Zng-sq-Dm8" secondAttribute="trailing" id="zAE-xh-dSA"/>
+            </constraints>
+            <connections>
+                <outlet property="imgMenuItem" destination="CXb-Ua-vCT" id="hb8-8u-iSa"/>
+                <outlet property="uiLblMenuItem" destination="Bjo-Qf-SXU" id="lfX-Zu-JPh"/>
+            </connections>
+        </view>
+    </objects>
+</document>
