@@ -14,14 +14,19 @@
 
 @property (strong, nonatomic) DSMenu *menu;
 @property (nonatomic) NSUInteger shouldSelectIndex;
-@property (strong, nonatomic) NSArray *menuItems;
 
 @end
 
 @implementation DSMultiRowTabBarController
 
--(id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setupDefaults];
+    [self setDelegate:self];
+    [self setupMenu];
+}
+
+-(void)setupDefaults{
     self.menuBackGroundColor = [UIColor whiteColor];
     self.menuOverLayBackGroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.6];
     self.menuItemBackGroundColor = [UIColor whiteColor];
@@ -31,83 +36,13 @@
     self.noOfTabsInRowForIPhone = 5;
     self.noOfTabsInRowForIPad = 8;
     self.menuItemHeight = 55;
-    return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setDelegate:self];
-    [self setupMenu];
-}
-
-- (void)setUpTabBarForIndex:(int)index{
-    self.menuItems = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]
-                                                             pathForResource:@"TabBarItems"
-                                                             ofType:@"plist"]];
-    
-    [self setViewControllers:[self controllersForIndex:index]];
-}
-
-- (NSArray *)controllersForIndex:(int)index{
-    NSMutableArray *controllers = [[NSMutableArray alloc] init];
-    int maxIndex = self.menuItems.count > [self getNumberOfTabs] ? [self getNumberOfTabs] : (int)self.menuItems.count;
-    for (int i =0; i < maxIndex; i++) {
-        UITabBarItem *tabBarItem = [self getTabBarItem:i];
-        UIViewController *navViewController;
-        if(i < ([self getNumberOfTabs] - 1)){
-            navViewController = [self getControllerFor:i];
-        }
-        
-        if(i == ([self getNumberOfTabs] - 1)){
-            if(index >= ([self getNumberOfTabs] - 1)){
-                navViewController = [self getControllerFor:index];
-            }else{
-                navViewController = [self getControllerFor:i];
-            }
-        }
-        
-        navViewController.tabBarItem = tabBarItem;
-        [controllers addObject:navViewController];
-    }
-    return controllers;
-}
-
-- (UITabBarItem *)getTabBarItem:(int)index {
-    NSDictionary *tabBarItemDetails = [self.menuItems objectAtIndex:index];
-    NSString *tabBarItemTitle = tabBarItemDetails[@"name"];
-    if(index >= ([self getNumberOfTabs]-1) && self.menuItems.count > [self getNumberOfTabs]){
-        tabBarItemTitle = [self getMoreButtontext];
-    }
-    UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:tabBarItemTitle
-                                                             image:[UIImage imageNamed:tabBarItemDetails[@"icon"]]
-                                                               tag:0];
-    tabBarItem.image = [tabBarItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    return tabBarItem;
-}
-
-- (UIViewController *)getControllerForTabBarItem:(NSDictionary *)tabBarItemDetails {
-    NSString *storyboardName = tabBarItemDetails[@"storyboardName"];
-    NSString *controllerId = tabBarItemDetails[@"controllerId"];
-    UIViewController *viewController = [self viewControllerInStoryboard:storyboardName withId:controllerId];
-    return viewController;
-}
-
--(UIViewController *)getControllerFor:(int)index{
-    UIViewController *viewController = [self getControllerForTabBarItem:[self.menuItems objectAtIndex:index]];
-    viewController.tabBarItem = [self getTabBarItem:index];
-    return viewController;
-}
-
--(UIViewController *)viewControllerInStoryboard:(NSString *)storyboardname withId:(NSString *)controllerId{
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:storyboardname bundle:[NSBundle mainBundle]];
-    return [storyBoard instantiateViewControllerWithIdentifier:controllerId];
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
-    if(self.menuItems.count <= [self getNumberOfTabs]){
+    if(self.viewControllers.count <= [self numberOfTabsPerRow]){
         return YES;
     }
-    if (viewController == [self.viewControllers objectAtIndex:([self getNumberOfTabs]-1)] && !self.menu.isShown)
+    if (viewController == [self.viewControllers objectAtIndex:([self numberOfTabsPerRow]-1)] && !self.menu.isShown)
     {
         [self showMenu];
         return NO;
@@ -118,7 +53,7 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     int index = (int)[self.viewControllers indexOfObject:viewController];
-    if(index < ([self getNumberOfTabs] - 1)){
+    if(index < ([self numberOfTabsPerRow] - 1)){
         [self syncMenu];
     }
 }
@@ -126,25 +61,26 @@
 
 #pragma mark - menu methods
 -(void)setupMenu {
-    self.menu = [[[NSBundle mainBundle] loadNibNamed:@"MRMenu" owner:self options:nil] objectAtIndex:0];
-    [self.menu.menuCollectionView registerNib:[UINib nibWithNibName:@"MRMenuItem" bundle:nil] forCellWithReuseIdentifier:@"MRMenuItem"];
+    self.menu = [[[NSBundle mainBundle] loadNibNamed:@"DSMenu" owner:self options:nil] objectAtIndex:0];
+    [self.menu.menuCollectionView registerNib:[UINib nibWithNibName:@"DSMenuItem" bundle:nil] forCellWithReuseIdentifier:@"DSMenuItem"];
     
-    self.menu.menuItems = self.menuItems;
-    [self.menu setBackgroundColor:[self getMenuOverLayBackGroundColor]];
-    [self.menu.menuCollectionView setBackgroundColor:[self getMenuBackGroundColor]];
-    self.menu.columns = [self getNumberOfTabs];
-    self.menu.menuItemHeight = [self getMenuItemheight];
+    //Add code to set up menu items in expandable menu
+    [self.menu setBackgroundColor:[self menuOverLayBackGroundColor]];
+    [self.menu.menuCollectionView setBackgroundColor:[self menuBackGroundColor]];
+    self.menu.columns = [self numberOfTabsPerRow];
+    self.menu.menuItemHeight = [self menuItemheight];
     
     self.menu.delegate = self;
     self.menu.hidden = YES;
     [self syncMenu];
     
-    float columns = (self.menuItems.count+1)/(float)[self getNumberOfTabs];
+    float columns = (self.viewControllers.count+1)/(float)[self numberOfTabsPerRow];
     columns = columns > (int)columns ? (int)columns + 1 : columns;
-    self.menu.constraintMenuHeight.constant = columns*[self getMenuItemheight];
+    self.menu.constraintMenuHeight.constant = columns*[self menuItemheight];
     CGRect frame = self.view.frame;
     frame.size.height = 0;
     self.menu.frame = frame;
+    [self.menu removeFromSuperview];
     [self.view addSubview:self.menu];
 }
 
@@ -162,11 +98,11 @@
 }
 
 -(void)selectTab:(int)index{
-    if(index >= [self getNumberOfTabs]){
+    if(index >= [self numberOfTabsPerRow]){
         NSMutableArray *existingViewControllers = [[self viewControllers] mutableCopy];
-        [existingViewControllers replaceObjectAtIndex:([self getNumberOfTabs] - 1) withObject:[self getControllerFor:index]];
+        [existingViewControllers replaceObjectAtIndex:([self numberOfTabsPerRow] - 1) withObject:[self.viewControllers objectAtIndex:index]];
         [self setViewControllers:existingViewControllers animated:NO];
-        self.selectedIndex = [self getNumberOfTabs] -1;
+        self.selectedIndex = [self numberOfTabsPerRow] -1;
     }else{
         self.selectedIndex = index;
     }
@@ -174,6 +110,14 @@
     [self syncMenu];
     [self hideMenu];
 }
+
+
+-(void)syncMenu{
+    self.menu.selectedIndex = (int)self.shouldSelectIndex;
+    [self.menu.menuCollectionView reloadData];
+}
+
+#pragma mark - UI Configurable methods
 
 -(UIColor *)menuItemColor{
     return self.menuItemBackGroundColor;
@@ -183,45 +127,38 @@
     return self.menuItemSelectdBackGroundColor;
 }
 
--(NSString *)getCloseButtonText{
+-(NSString *)closeButtonText{
     return self.closeButtonText;
 }
 
--(void)syncMenu{
-    self.menu.selectedIndex = (int)self.shouldSelectIndex;
-    [self.menu.menuCollectionView reloadData];
-}
-
-#pragma mark - config methods
-
--(UIColor *)getMenuBackGroundColor{
+-(UIColor *)menuBackGroundColor{
     return self.menuBackGroundColor;
 }
 
--(UIColor *)getMenuOverLayBackGroundColor{
+-(UIColor *)menuOverLayBackGroundColor{
     return self.menuOverLayBackGroundColor;
 }
 
--(UIColor *)getMenuItemSelectdBackGroundColor{
+-(UIColor *)menuItemSelectdBackGroundColor{
     return self.menuItemSelectdBackGroundColor;
 }
 
--(UIColor *)getMenuItemBackGroundColor{
+-(UIColor *)menuItemBackGroundColor{
     return self.menuItemBackGroundColor;
 }
 
--(NSString *)getMoreButtontext{
+-(NSString *)moreButtontext{
     return self.moreButtonText;
 }
 
--(int)getNumberOfTabs{
+-(int)numberOfTabsPerRow{
     if(IDIOM == IPAD){
         return (int)self.noOfTabsInRowForIPad > 8 ? 8 : (int)self.noOfTabsInRowForIPad;
     }
     return (int)self.noOfTabsInRowForIPhone > 5 ? 5 : (int)self.noOfTabsInRowForIPhone;
 }
 
--(int)getMenuItemheight{
+-(int)menuItemheight{
     return (int)self.menuItemHeight;
 }
 

@@ -40,7 +40,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    DSMenuItem *menuCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MRMenuItem" forIndexPath:indexPath];
+    DSMenuItem *menuCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DSMenuItem" forIndexPath:indexPath];
     [menuCell initWith:[self.menuItems objectAtIndex:indexPath.row]];
     if(indexPath.row == self.selectedIndex){
         menuCell.backgroundColor = [self.delegate menuSelectedItemColor];
@@ -57,7 +57,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat menuItemWidth = SCREEN_WIDTH/(float)self.columns;
+    CGFloat menuItemWidth = [[UIScreen mainScreen] bounds].size.width/(float)self.columns;
     return CGSizeMake(menuItemWidth, self.menuItemHeight);
 }
 
