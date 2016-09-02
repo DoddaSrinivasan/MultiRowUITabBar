@@ -1,0 +1,6 @@
+framework module MultiRowUITabBar {
+  umbrella header "MultiRowUITabBar-umbrella.h"
+
+  export *
+  module * { export * }
+}

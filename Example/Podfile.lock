@@ -1,0 +1,16 @@
+PODS:
+  - MultiRowUITabBar (0.1.0)
+
+DEPENDENCIES:
+  - MultiRowUITabBar (from `../`)
+
+EXTERNAL SOURCES:
+  MultiRowUITabBar:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MultiRowUITabBar: 0aa91c8fe7095497814fd3ac2812a8b94da0b135
+
+PODFILE CHECKSUM: 58fcdd2cc02824ca872c523e78eadefef528916c
+
+COCOAPODS: 1.0.1

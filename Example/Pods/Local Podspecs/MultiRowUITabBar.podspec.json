@@ -1,0 +1,22 @@
+{
+  "name": "MultiRowUITabBar",
+  "version": "0.1.0",
+  "summary": "A short description of MultiRowUITabBar.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/MultiRowUITabBar",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Dodda Srinivasan": "srinivasan.munna@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/MultiRowUITabBar.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MultiRowUITabBar/Classes/**/*"
+}

@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MultiRowUITabBar_Example' do
+  pod 'MultiRowUITabBar', :path => '../'
+
+  target 'MultiRowUITabBar_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
