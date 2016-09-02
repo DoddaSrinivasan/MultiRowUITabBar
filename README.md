@@ -1,3 +1,5 @@
+# Currently Re-Architecting this repo and adding CocoaPods support. Check back for updates.
+
 # MultiRowUITabBar
 Custom UITabBarController for iOS. Provides multiple rows of tab bar items on click of "More".
 
