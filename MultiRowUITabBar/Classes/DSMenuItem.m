@@ -6,9 +6,9 @@
 //  Copyright © 2016 Thoughtworks. All rights reserved.
 //
 
-#import "MRMenuItem.h"
+#import "DSMenuItem.h"
 
-@implementation MRMenuItem
+@implementation DSMenuItem
 
 -(void)initWith:(NSDictionary *)menuItem{
     [self.imgMenuItem setImage:[UIImage imageNamed:[menuItem valueForKey:@"imageName"]]];

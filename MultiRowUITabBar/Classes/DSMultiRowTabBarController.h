@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MRMenu.h"
+#import "DSMenu.h"
 
-@interface MultiRowTabBarController : UITabBarController <UITabBarControllerDelegate, MRMenuViewDelegate>
+@interface DSMultiRowTabBarController : UITabBarController <UITabBarControllerDelegate, DSMenuViewDelegate>
 
 @property (strong, nonatomic) UIColor *menuBackGroundColor;
 

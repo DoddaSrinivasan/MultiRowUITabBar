@@ -4,13 +4,13 @@
 //  Created by Srinivasan Dodda on 15/03/16.
 //
 
-#import "MRMenu.h"
-#import "MRMenuItem.h"
+#import "DSMenu.h"
+#import "DSMenuItem.h"
 
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 
-@implementation MRMenu
+@implementation DSMenu
 
 - (IBAction)clickedOut:(id)sender {
     if(self.delegate && [self.delegate respondsToSelector:@selector(hideMenu)]){
@@ -40,7 +40,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    MRMenuItem *menuCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MRMenuItem" forIndexPath:indexPath];
+    DSMenuItem *menuCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MRMenuItem" forIndexPath:indexPath];
     [menuCell initWith:[self.menuItems objectAtIndex:indexPath.row]];
     if(indexPath.row == self.selectedIndex){
         menuCell.backgroundColor = [self.delegate menuSelectedItemColor];

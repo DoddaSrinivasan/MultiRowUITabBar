@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0A6AE2ACD73C986E66ADFB047D4CCC61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		3086E7731D798132008FA775 /* MRMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 3086E76B1D798132008FA775 /* MRMenu.h */; };
-		3086E7741D798132008FA775 /* MRMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3086E76C1D798132008FA775 /* MRMenu.m */; };
-		3086E7751D798132008FA775 /* MRMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 3086E76E1D798132008FA775 /* MRMenuItem.h */; };
-		3086E7761D798132008FA775 /* MRMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3086E76F1D798132008FA775 /* MRMenuItem.m */; };
-		3086E7771D798132008FA775 /* MultiRowTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3086E7711D798132008FA775 /* MultiRowTabBarController.h */; };
-		3086E7781D798132008FA775 /* MultiRowTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3086E7721D798132008FA775 /* MultiRowTabBarController.m */; };
+		3086E7731D798132008FA775 /* DSMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 3086E76B1D798132008FA775 /* DSMenu.h */; };
+		3086E7741D798132008FA775 /* DSMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3086E76C1D798132008FA775 /* DSMenu.m */; };
+		3086E7751D798132008FA775 /* DSMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 3086E76E1D798132008FA775 /* DSMenuItem.h */; };
+		3086E7761D798132008FA775 /* DSMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3086E76F1D798132008FA775 /* DSMenuItem.m */; };
+		3086E7771D798132008FA775 /* DSMultiRowTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3086E7711D798132008FA775 /* DSMultiRowTabBarController.h */; };
+		3086E7781D798132008FA775 /* DSMultiRowTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3086E7721D798132008FA775 /* DSMultiRowTabBarController.m */; };
 		3884D8C4AFF525882C7150DD8174EA6D /* Pods-MultiRowUITabBar_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BFD62995BC9EB676E3F6D7A46D3B807 /* Pods-MultiRowUITabBar_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3DA4B77125684484DEF5731A00A4AC51 /* Pods-MultiRowUITabBar_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0902C352E2C2C195498E0AE2417DAECD /* Pods-MultiRowUITabBar_Tests-dummy.m */; };
 		42F5A814C476C2F74E8190688405F17E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
@@ -46,14 +46,14 @@
 		2B6D2145EB69103A1CE0BDF4844BB4DE /* Pods-MultiRowUITabBar_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MultiRowUITabBar_Example.release.xcconfig"; sourceTree = "<group>"; };
 		2E3AD74D86092A981DBB5E1D3B80E084 /* Pods-MultiRowUITabBar_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MultiRowUITabBar_Tests-umbrella.h"; sourceTree = "<group>"; };
 		2E52C49DE30FEBE934A8955289A1A17A /* Pods-MultiRowUITabBar_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MultiRowUITabBar_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3086E76B1D798132008FA775 /* MRMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMenu.h; sourceTree = "<group>"; };
-		3086E76C1D798132008FA775 /* MRMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMenu.m; sourceTree = "<group>"; };
-		3086E76D1D798132008FA775 /* MRMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MRMenu.xib; sourceTree = "<group>"; };
-		3086E76E1D798132008FA775 /* MRMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMenuItem.h; sourceTree = "<group>"; };
-		3086E76F1D798132008FA775 /* MRMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMenuItem.m; sourceTree = "<group>"; };
-		3086E7701D798132008FA775 /* MRMenuItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MRMenuItem.xib; sourceTree = "<group>"; };
-		3086E7711D798132008FA775 /* MultiRowTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiRowTabBarController.h; sourceTree = "<group>"; };
-		3086E7721D798132008FA775 /* MultiRowTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiRowTabBarController.m; sourceTree = "<group>"; };
+		3086E76B1D798132008FA775 /* DSMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSMenu.h; sourceTree = "<group>"; };
+		3086E76C1D798132008FA775 /* DSMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSMenu.m; sourceTree = "<group>"; };
+		3086E76D1D798132008FA775 /* DSMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSMenu.xib; sourceTree = "<group>"; };
+		3086E76E1D798132008FA775 /* DSMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSMenuItem.h; sourceTree = "<group>"; };
+		3086E76F1D798132008FA775 /* DSMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSMenuItem.m; sourceTree = "<group>"; };
+		3086E7701D798132008FA775 /* DSMenuItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSMenuItem.xib; sourceTree = "<group>"; };
+		3086E7711D798132008FA775 /* DSMultiRowTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSMultiRowTabBarController.h; sourceTree = "<group>"; };
+		3086E7721D798132008FA775 /* DSMultiRowTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSMultiRowTabBarController.m; sourceTree = "<group>"; };
 		3BFD62995BC9EB676E3F6D7A46D3B807 /* Pods-MultiRowUITabBar_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MultiRowUITabBar_Example-umbrella.h"; sourceTree = "<group>"; };
 		4A2E21F9A5163ADA197C43B561E98B1D /* Pods-MultiRowUITabBar_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MultiRowUITabBar_Example-resources.sh"; sourceTree = "<group>"; };
 		512A40CDDCD37A3ED120938F470C4DD3 /* Pods-MultiRowUITabBar_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MultiRowUITabBar_Example.modulemap"; sourceTree = "<group>"; };
@@ -229,14 +229,14 @@
 		EF5A4DFC1A34B6FDACEABB7660557D8D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3086E76B1D798132008FA775 /* MRMenu.h */,
-				3086E76C1D798132008FA775 /* MRMenu.m */,
-				3086E76D1D798132008FA775 /* MRMenu.xib */,
-				3086E76E1D798132008FA775 /* MRMenuItem.h */,
-				3086E76F1D798132008FA775 /* MRMenuItem.m */,
-				3086E7701D798132008FA775 /* MRMenuItem.xib */,
-				3086E7711D798132008FA775 /* MultiRowTabBarController.h */,
-				3086E7721D798132008FA775 /* MultiRowTabBarController.m */,
+				3086E76B1D798132008FA775 /* DSMenu.h */,
+				3086E76C1D798132008FA775 /* DSMenu.m */,
+				3086E76D1D798132008FA775 /* DSMenu.xib */,
+				3086E76E1D798132008FA775 /* DSMenuItem.h */,
+				3086E76F1D798132008FA775 /* DSMenuItem.m */,
+				3086E7701D798132008FA775 /* DSMenuItem.xib */,
+				3086E7711D798132008FA775 /* DSMultiRowTabBarController.h */,
+				3086E7721D798132008FA775 /* DSMultiRowTabBarController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -264,10 +264,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3086E7751D798132008FA775 /* MRMenuItem.h in Headers */,
-				3086E7731D798132008FA775 /* MRMenu.h in Headers */,
+				3086E7751D798132008FA775 /* DSMenuItem.h in Headers */,
+				3086E7731D798132008FA775 /* DSMenu.h in Headers */,
 				F67B7B7FA9123F6296DB6E5D52129ABE /* MultiRowUITabBar-umbrella.h in Headers */,
-				3086E7771D798132008FA775 /* MultiRowTabBarController.h in Headers */,
+				3086E7771D798132008FA775 /* DSMultiRowTabBarController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,10 +375,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3086E7781D798132008FA775 /* MultiRowTabBarController.m in Sources */,
+				3086E7781D798132008FA775 /* DSMultiRowTabBarController.m in Sources */,
 				58A847A618F8AAE35C998D1D0D576767 /* MultiRowUITabBar-dummy.m in Sources */,
-				3086E7761D798132008FA775 /* MRMenuItem.m in Sources */,
-				3086E7741D798132008FA775 /* MRMenu.m in Sources */,
+				3086E7761D798132008FA775 /* DSMenuItem.m in Sources */,
+				3086E7741D798132008FA775 /* DSMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol MRMenuViewDelegate <NSObject>
+@protocol DSMenuViewDelegate <NSObject>
     -(void)hideMenu;
     -(void)selectTab:(int)index;
     -(UIColor *)menuItemColor;
@@ -17,7 +17,7 @@
 @end
 
 
-@interface MRMenu : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface DSMenu : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) UIColor *menuItemBackGroundColor;
 @property (strong, nonatomic) UIColor *menuItemSelectdBackGroundColor;
@@ -36,6 +36,6 @@
 @property BOOL isShown;
 @property int selectedIndex;
 
-@property(nonatomic) NSObject <MRMenuViewDelegate> *delegate;
+@property(nonatomic) NSObject <DSMenuViewDelegate> *delegate;
 
 @end

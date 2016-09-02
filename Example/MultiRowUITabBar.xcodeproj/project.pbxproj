@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17BE50202A419F8EB34B6302 /* Pods_MultiRowUITabBar_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDCF3BF4EAB1DC91E5C4C22 /* Pods_MultiRowUITabBar_Example.framework */; };
+		3086E77A1D798218008FA775 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3086E7791D798218008FA775 /* Launch Screen.storyboard */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -39,6 +40,7 @@
 		0D5BB5C7F89EA2F5BA4FB845 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		2986A984D3A3F238EB654D5B /* Pods_MultiRowUITabBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultiRowUITabBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDCF3BF4EAB1DC91E5C4C22 /* Pods_MultiRowUITabBar_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultiRowUITabBar_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3086E7791D798218008FA775 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4094EB307B8B3D0B2BD8E1EE /* MultiRowUITabBar.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MultiRowUITabBar.podspec; path = ../MultiRowUITabBar.podspec; sourceTree = "<group>"; };
 		54AE348856B4F6037C9D3213 /* Pods-MultiRowUITabBar_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultiRowUITabBar_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MultiRowUITabBar_Example/Pods-MultiRowUITabBar_Example.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* MultiRowUITabBar_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiRowUITabBar_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 				6003F5A6195388D20070C39A /* DSViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				3086E7791D798218008FA775 /* Launch Screen.storyboard */,
 			);
 			name = "Example for MultiRowUITabBar";
 			path = MultiRowUITabBar;
@@ -278,6 +281,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				3086E77A1D798218008FA775 /* Launch Screen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,12 +516,11 @@
 			baseConfigurationReference = BD6DFA526FECBE3331824C56 /* Pods-MultiRowUITabBar_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MultiRowUITabBar/MultiRowUITabBar-Prefix.pch";
 				INFOPLIST_FILE = "MultiRowUITabBar/MultiRowUITabBar-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.srini.MultiRowUITabBar-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -528,12 +531,11 @@
 			baseConfigurationReference = 54AE348856B4F6037C9D3213 /* Pods-MultiRowUITabBar_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MultiRowUITabBar/MultiRowUITabBar-Prefix.pch";
 				INFOPLIST_FILE = "MultiRowUITabBar/MultiRowUITabBar-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.srini.MultiRowUITabBar-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

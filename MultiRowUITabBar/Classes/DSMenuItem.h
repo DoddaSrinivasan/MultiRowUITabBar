@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MRMenuItem : UICollectionViewCell
+@interface DSMenuItem : UICollectionViewCell
 
 @property (strong, nonatomic) UIColor *menuItemBackGroundColor;
 

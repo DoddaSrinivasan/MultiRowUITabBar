@@ -6,19 +6,19 @@
 //  Copyright © 2016 Srinivasan Dodda. All rights reserved.
 //
 
-#import "MultiRowTabBarController.h"
+#import "DSMultiRowTabBarController.h"
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
 
-@interface MultiRowTabBarController ()
+@interface DSMultiRowTabBarController ()
 
-@property (strong, nonatomic) MRMenu *menu;
+@property (strong, nonatomic) DSMenu *menu;
 @property (nonatomic) NSUInteger shouldSelectIndex;
 @property (strong, nonatomic) NSArray *menuItems;
 
 @end
 
-@implementation MultiRowTabBarController
+@implementation DSMultiRowTabBarController
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -36,10 +36,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+    [self setDelegate:self];
+    [self setupMenu];
 }
 
 - (void)setUpTabBarForIndex:(int)index{
@@ -128,7 +126,6 @@
 
 #pragma mark - menu methods
 -(void)setupMenu {
-    
     self.menu = [[[NSBundle mainBundle] loadNibNamed:@"MRMenu" owner:self options:nil] objectAtIndex:0];
     [self.menu.menuCollectionView registerNib:[UINib nibWithNibName:@"MRMenuItem" bundle:nil] forCellWithReuseIdentifier:@"MRMenuItem"];
     
