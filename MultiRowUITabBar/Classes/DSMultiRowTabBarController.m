@@ -19,6 +19,8 @@
 
 @implementation DSMultiRowTabBarController
 
+#pragma mark - Initial Set up
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDefaults];
@@ -37,6 +39,8 @@
     self.noOfTabsInRowForIPad = 8;
     self.menuItemHeight = 55;
 }
+
+#pragma mark - Tab bar delegate methods
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
     if(self.viewControllers.count <= [self numberOfTabsPerRow]){
@@ -60,11 +64,11 @@
 
 
 #pragma mark - menu methods
+
 -(void)setupMenu {
     self.menu = [[[NSBundle mainBundle] loadNibNamed:@"DSMenu" owner:self options:nil] objectAtIndex:0];
     [self.menu.menuCollectionView registerNib:[UINib nibWithNibName:@"DSMenuItem" bundle:nil] forCellWithReuseIdentifier:@"DSMenuItem"];
-    
-    //Add code to set up menu items in expandable menu
+
     [self.menu setBackgroundColor:[self menuOverLayBackGroundColor]];
     [self.menu.menuCollectionView setBackgroundColor:[self menuBackGroundColor]];
     self.menu.columns = [self numberOfTabsPerRow];
@@ -73,15 +77,19 @@
     self.menu.delegate = self;
     self.menu.hidden = YES;
     [self syncMenu];
+    [self reloadMenuItems];
     
+    [self.menu removeFromSuperview];
+    [self.view addSubview:self.menu];
+}
+
+-(void)reloadMenuItems{
     float columns = (self.viewControllers.count+1)/(float)[self numberOfTabsPerRow];
     columns = columns > (int)columns ? (int)columns + 1 : columns;
     self.menu.constraintMenuHeight.constant = columns*[self menuItemheight];
     CGRect frame = self.view.frame;
     frame.size.height = 0;
     self.menu.frame = frame;
-    [self.menu removeFromSuperview];
-    [self.view addSubview:self.menu];
 }
 
 -(void)showMenu{
@@ -89,6 +97,13 @@
     self.menu.hidden = NO;
     [self.menu.menuCollectionView reloadData];
 }
+
+-(void)syncMenu{
+    self.menu.selectedIndex = (int)self.shouldSelectIndex;
+    [self.menu.menuCollectionView reloadData];
+}
+
+#pragma mark - Menu Delegate
 
 -(void)hideMenu{
     self.menu.hidden = YES;
@@ -111,13 +126,15 @@
     [self hideMenu];
 }
 
-
--(void)syncMenu{
-    self.menu.selectedIndex = (int)self.shouldSelectIndex;
-    [self.menu.menuCollectionView reloadData];
+-(NSInteger)numberOfMenuItems{
+    return self.viewControllers.count;
 }
 
-#pragma mark - UI Configurable methods
+-(void)setMenuItem:(DSMenuItem *)menuItem forIndex:(NSUInteger)index{
+    UITabBarItem *tabBarItem = [self.tabBar.items objectAtIndex:index];
+    menuItem.uiLblMenuItem.text = tabBarItem.title;
+    menuItem.imgMenuItem.image = tabBarItem.image;
+}
 
 -(UIColor *)menuItemColor{
     return self.menuItemBackGroundColor;
@@ -130,6 +147,12 @@
 -(NSString *)closeButtonText{
     return self.closeButtonText;
 }
+
+
+
+#pragma mark - UI Configurable methods
+
+
 
 -(UIColor *)menuBackGroundColor{
     return self.menuBackGroundColor;

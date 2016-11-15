@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSMenuItem.h"
 
 @protocol DSMenuViewDelegate <NSObject>
     -(void)hideMenu;
     -(void)selectTab:(int)index;
     -(UIColor *)menuItemColor;
     -(UIColor *)menuSelectedItemColor;
-    -(NSString *)getCloseButtonText;
+    -(NSString *)closeButtonText;
+    -(NSInteger)numberOfMenuItems;
+    -(void)setMenuItem:(DSMenuItem *)menuItem forIndex:(NSUInteger)index;
 @end
 
 
@@ -27,7 +30,6 @@
 - (IBAction)clickedOut:(id)sender;
 - (IBAction)closeMenu:(id)sender;
 
-@property (strong, nonatomic) NSArray *menuItems;
 @property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMenuHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCloseWidth;

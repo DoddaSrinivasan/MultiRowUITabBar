@@ -36,12 +36,12 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.menuItems.count;
+    return [_delegate numberOfMenuItems];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DSMenuItem *menuCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DSMenuItem" forIndexPath:indexPath];
-    [menuCell initWith:[self.menuItems objectAtIndex:indexPath.row]];
+    [_delegate setMenuItem:menuCell forIndex:indexPath.row];
     if(indexPath.row == self.selectedIndex){
         menuCell.backgroundColor = [self.delegate menuSelectedItemColor];
     }else{

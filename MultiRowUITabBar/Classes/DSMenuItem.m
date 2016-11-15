@@ -10,9 +10,4 @@
 
 @implementation DSMenuItem
 
--(void)initWith:(NSDictionary *)menuItem{
-    [self.imgMenuItem setImage:[UIImage imageNamed:[menuItem valueForKey:@"imageName"]]];
-    self.uiLblMenuItem.text = [menuItem valueForKey:@"name"];
-}
-
 @end

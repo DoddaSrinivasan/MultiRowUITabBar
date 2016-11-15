@@ -26,7 +26,6 @@
 @property NSUInteger menuItemHeight;
 
 @property NSUInteger noOfTabsInRowForIPhone;
-
 @property NSUInteger noOfTabsInRowForIPad;
 
 -(void)setUpTabBarForIndex:(int)index;
