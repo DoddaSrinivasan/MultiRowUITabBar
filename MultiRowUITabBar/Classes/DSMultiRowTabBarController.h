@@ -12,10 +12,10 @@
 @interface DSMultiRowTabBarController : UITabBarController <UITabBarControllerDelegate, DSMenuViewDelegate>
 
 @property NSUInteger menuItemHeight;
-
 @property NSUInteger noOfTabsInRowForIPhone;
 @property NSUInteger noOfTabsInRowForIPad;
 
 -(void)setupTabBar;
+-(NSUInteger)numberOfMenuItems;
 
 @end

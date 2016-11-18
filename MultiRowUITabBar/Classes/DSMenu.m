@@ -37,12 +37,12 @@
 }
 
 -(void)setColumns:(int)columns{
-    self.columns = columns;
+    _columns = columns;
     self.constraintMenuHeight.constant = columns*_menuItemHeight;
 }
 
 -(void)setMenuItemHeight:(int)height{
-    self.menuItemHeight = height;
+    _menuItemHeight = height;
     self.constraintMenuHeight.constant = _columns*height;
 }
 

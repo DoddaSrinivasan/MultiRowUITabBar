@@ -25,4 +25,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(NSUInteger)numberOfMenuItems{
+    return 0;
+}
+
 @end
