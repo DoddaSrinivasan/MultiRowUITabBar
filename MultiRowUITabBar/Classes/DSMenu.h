@@ -12,9 +12,7 @@
 @protocol DSMenuViewDelegate <NSObject>
     -(void)hideMenu;
     -(void)selectTab:(int)index;
-    -(UIColor *)menuItemColor;
-    -(UIColor *)menuSelectedItemColor;
-    -(NSString *)closeButtonText;
+
     -(NSInteger)numberOfMenuItems;
     -(void)setMenuItem:(DSMenuItem *)menuItem forIndex:(NSUInteger)index;
 @end
@@ -22,22 +20,11 @@
 
 @interface DSMenu : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (strong, nonatomic) UIColor *menuItemBackGroundColor;
-@property (strong, nonatomic) UIColor *menuItemSelectdBackGroundColor;
-@property int columns;
-@property int menuItemHeight;
-
-- (IBAction)clickedOut:(id)sender;
-- (IBAction)closeMenu:(id)sender;
-
-@property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMenuHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCloseWidth;
-@property (weak, nonatomic) IBOutlet UIView *viewShadow;
-
 @property BOOL isShown;
-@property int selectedIndex;
-
 @property(nonatomic) NSObject <DSMenuViewDelegate> *delegate;
 
+-(void)registerNib:(UINib *)nib withReuseIdentifier:(NSString *)reuseIdentifier;
+-(void)setColumns:(int)columns;
+-(void)setMenuItemHeight:(int)height;
+-(void)reloadData;
 @end

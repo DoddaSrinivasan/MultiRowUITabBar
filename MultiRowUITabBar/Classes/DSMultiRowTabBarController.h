@@ -11,24 +11,11 @@
 
 @interface DSMultiRowTabBarController : UITabBarController <UITabBarControllerDelegate, DSMenuViewDelegate>
 
-@property (strong, nonatomic) UIColor *menuBackGroundColor;
-
-@property (strong, nonatomic) UIColor *menuOverLayBackGroundColor;
-
-@property (strong, nonatomic) UIColor *menuItemBackGroundColor;
-
-@property (strong, nonatomic) UIColor *menuItemSelectdBackGroundColor;
-
-@property (strong, nonatomic) NSString *moreButtonText;
-
-@property (strong, nonatomic) NSString *closeButtonText;
-
 @property NSUInteger menuItemHeight;
 
 @property NSUInteger noOfTabsInRowForIPhone;
 @property NSUInteger noOfTabsInRowForIPad;
 
--(void)setUpTabBarForIndex:(int)index;
--(void)setupMenu;
+-(void)setupTabBar;
 
 @end
