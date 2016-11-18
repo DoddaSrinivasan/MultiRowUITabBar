@@ -63,6 +63,7 @@
         [viewControllers addObject:viewController];
     }
     [self setViewControllers:viewControllers];
+    [self reloadMenuItems];
 }
 
 -(UITabBarItem *)tabBarItemForIndex:(NSUInteger)index{
@@ -95,7 +96,7 @@
 }
 
 -(void)reloadMenuItems{
-    float columns = (self.viewControllers.count+1)/(float)[self numberOfTabsPerRow];
+    float columns = (self.numberOfMenuItems+1)/(float)[self numberOfTabsPerRow];
     columns = columns > (int)columns ? (int)columns + 1 : columns;
     
     [self.menu setColumns:[self numberOfTabsPerRow]];
