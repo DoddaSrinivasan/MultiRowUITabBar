@@ -83,8 +83,11 @@
 #pragma mark - Menu methods
 
 -(void)setupMenu {
-    self.menu = [[[NSBundle mainBundle] loadNibNamed:@"DSMenu" owner:self options:nil] objectAtIndex:0];
-    [self.menu registerNib:[UINib nibWithNibName:@"DSMenuItem" bundle:nil] withReuseIdentifier:@"DSMenuItem"];
+
+    NSString *bundlePath = [[NSBundle bundleForClass:[DSMultiRowTabBarController class]] pathForResource:@"MultiRowUITabBar" ofType:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    self.menu = [[bundle loadNibNamed:@"DSMenu" owner:self options:nil] objectAtIndex:0];
+    [self.menu registerNib:[UINib nibWithNibName:@"DSMenuItem" bundle:bundle] withReuseIdentifier:@"DSMenuItem"];
 
     self.menu.delegate = self;
     self.menu.hidden = YES;

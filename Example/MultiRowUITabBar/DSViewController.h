@@ -6,8 +6,9 @@
 //  Copyright (c) 2016 Dodda Srinivasan. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
+#import "DSMultiRowTabBarController.h"
 
-@interface DSViewController : UIViewController
+@interface DSViewController : DSMultiRowTabBarController
 
 @end

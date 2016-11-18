@@ -6,7 +6,7 @@
 //  Copyright (c) 2016 Dodda Srinivasan. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 @interface DSAppDelegate : UIResponder <UIApplicationDelegate>
 

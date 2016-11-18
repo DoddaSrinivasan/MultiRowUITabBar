@@ -1,8 +1,7 @@
 {
   "name": "MultiRowUITabBar",
   "version": "0.1.0",
-  "summary": "A short description of MultiRowUITabBar.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "A Sub Class of UITabCarController to show more Tab Bar items in multiple rows",
   "homepage": "https://github.com/<GITHUB_USERNAME>/MultiRowUITabBar",
   "license": {
     "type": "MIT",
@@ -12,11 +11,17 @@
     "Dodda Srinivasan": "srinivasan.munna@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/MultiRowUITabBar.git",
+    "git": "https://github.com/DoddaSrinivasan/MultiRowUITabBar.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "MultiRowUITabBar/Classes/**/*"
+  "source_files": "MultiRowUITabBar/Classes/**/*",
+  "resource_bundles": {
+    "MultiRowUITabBar": [
+      "MultiRowUITabBar/Assets/DSMenu.xib",
+      "MultiRowUITabBar/Assets/DSMenuItem.xib"
+    ]
+  }
 }

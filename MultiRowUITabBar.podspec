@@ -20,8 +20,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'MultiRowUITabBar/Classes/**/*'
-  
+
   s.resource_bundles = {
-    'MultiRowUITabBar' => ['MultiRowUITabBar/Classes/*.xib']
+    'MultiRowUITabBar' => ['MultiRowUITabBar/Assets/DSMenu.xib', 'MultiRowUITabBar/Assets/DSMenuItem.xib']
   }
 end
