@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tab View Controller-->
         <scene sceneID="TDc-7h-l0v">
             <objects>
-                <tabBarController id="N5i-S8-h7h" customClass="DSViewController" sceneMemberID="viewController">
+                <tabBarController id="N5i-S8-h7h" customClass="DSTabViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="4n6-cd-XKJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -19,6 +19,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XG-jY-NBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1009" y="305"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GZx-If-iZt">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="0FB-2W-hX4" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kfn-ib-dQ6"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rwg-5K-Xjg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vE0-MM-LL9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPH-0l-FO2">
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                                <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DPH-0l-FO2" firstAttribute="centerX" secondItem="vE0-MM-LL9" secondAttribute="centerX" id="ENE-xM-BJa"/>
+                            <constraint firstItem="DPH-0l-FO2" firstAttribute="centerY" secondItem="vE0-MM-LL9" secondAttribute="centerY" id="xlp-Jw-6kh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblTitle" destination="DPH-0l-FO2" id="5Qq-dS-dh3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K4w-1e-TSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-161" y="304"/>
         </scene>
     </scenes>
 </document>

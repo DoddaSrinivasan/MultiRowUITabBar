@@ -38,12 +38,12 @@
 
 -(void)setColumns:(int)columns{
     _columns = columns;
-    self.constraintMenuHeight.constant = columns*_menuItemHeight;
+    self.constraintMenuHeight.constant = (([_delegate numberOfMenuItems]+1)/columns)*_menuItemHeight;
 }
 
 -(void)setMenuItemHeight:(int)height{
     _menuItemHeight = height;
-    self.constraintMenuHeight.constant = _columns*height;
+    self.constraintMenuHeight.constant = (([_delegate numberOfMenuItems]+1)/_columns)*height;
 }
 
 #pragma mark - Click Handlers

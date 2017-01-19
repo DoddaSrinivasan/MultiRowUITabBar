@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DSMultiRowTabBarController.h"
 
-@interface DSViewController : DSMultiRowTabBarController
+@interface DSTabViewController : DSMultiRowTabBarController
 
 @end

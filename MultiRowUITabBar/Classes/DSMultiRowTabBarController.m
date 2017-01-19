@@ -31,11 +31,11 @@
 #pragma mark - TabBar Setup and delegate methods
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
-    if(self.viewControllers.count <= [self numberOfTabsPerRow]){
+    if(self.numberOfMenuItems <= [self numberOfTabsPerRow]){
         return YES;
     }
     
-    if (viewController == [self.viewControllers objectAtIndex:([self numberOfTabsPerRow]-1)] && !self.menu.isShown)
+    if (!self.menu.isShown && viewController == [self.viewControllers objectAtIndex:([self numberOfTabsPerRow]-1)])
     {
         [self showMenu];
         return NO;
@@ -53,7 +53,7 @@
     }
 }
 
--(void)setupTabbar{
+-(void)setupTabBar{
     NSMutableArray<UIViewController *> *viewControllers = [[NSMutableArray alloc] init];
     for(int i=0; i < self.numberOfTabsPerRow; i++){
         UIViewController *viewController = [self viewControllerForIndex:i];
@@ -83,7 +83,6 @@
 #pragma mark - Menu methods
 
 -(void)setupMenu {
-
     NSString *bundlePath = [[NSBundle bundleForClass:[DSMultiRowTabBarController class]] pathForResource:@"MultiRowUITabBar" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     self.menu = [[bundle loadNibNamed:@"DSMenu" owner:self options:nil] objectAtIndex:0];
@@ -131,7 +130,7 @@
 }
 
 -(void)selectTab:(int)index{
-    if(index >= [self numberOfTabsPerRow]){
+    if(index > [self numberOfTabsPerRow]){
         NSMutableArray *existingViewControllers = [[self viewControllers] mutableCopy];
         [existingViewControllers replaceObjectAtIndex:([self numberOfTabsPerRow] - 1) withObject:[self viewControllerForIndex:index]];
         [self setViewControllers:existingViewControllers animated:NO];

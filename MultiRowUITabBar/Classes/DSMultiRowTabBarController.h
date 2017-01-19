@@ -16,6 +16,11 @@
 @property NSUInteger noOfTabsInRowForIPad;
 
 -(void)setupTabBar;
+
 -(NSUInteger)numberOfMenuItems;
+-(void)setMenuItem:(DSMenuItem *)menuItem forIndex:(NSUInteger)index;
+
+-(UITabBarItem *)tabBarItemForIndex:(NSUInteger)index;
+-(UIViewController *)viewControllerForIndex:(NSUInteger)index;
 
 @end

@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		17BE50202A419F8EB34B6302 /* Pods_MultiRowUITabBar_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDCF3BF4EAB1DC91E5C4C22 /* Pods_MultiRowUITabBar_Example.framework */; };
 		3086E77A1D798218008FA775 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3086E7791D798218008FA775 /* Launch Screen.storyboard */; };
+		30A24E9B1E312A030026EE51 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A24E9A1E312A030026EE51 /* ViewController.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* DSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* DSAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* DSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* DSViewController.m */; };
+		6003F5A7195388D20070C39A /* DSTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* DSTabViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -41,6 +42,8 @@
 		2986A984D3A3F238EB654D5B /* Pods_MultiRowUITabBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultiRowUITabBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDCF3BF4EAB1DC91E5C4C22 /* Pods_MultiRowUITabBar_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultiRowUITabBar_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3086E7791D798218008FA775 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		30A24E991E312A030026EE51 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		30A24E9A1E312A030026EE51 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4094EB307B8B3D0B2BD8E1EE /* MultiRowUITabBar.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MultiRowUITabBar.podspec; path = ../MultiRowUITabBar.podspec; sourceTree = "<group>"; };
 		54AE348856B4F6037C9D3213 /* Pods-MultiRowUITabBar_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultiRowUITabBar_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MultiRowUITabBar_Example/Pods-MultiRowUITabBar_Example.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* MultiRowUITabBar_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiRowUITabBar_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,8 +56,8 @@
 		6003F59B195388D20070C39A /* MultiRowUITabBar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MultiRowUITabBar-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* DSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* DSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* DSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* DSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSViewController.m; sourceTree = "<group>"; };
+		6003F5A5195388D20070C39A /* DSTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTabViewController.h; sourceTree = "<group>"; };
+		6003F5A6195388D20070C39A /* DSTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTabViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* MultiRowUITabBar_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultiRowUITabBar_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -135,11 +138,13 @@
 				6003F59C195388D20070C39A /* DSAppDelegate.h */,
 				6003F59D195388D20070C39A /* DSAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* DSViewController.h */,
-				6003F5A6195388D20070C39A /* DSViewController.m */,
+				6003F5A5195388D20070C39A /* DSTabViewController.h */,
+				6003F5A6195388D20070C39A /* DSTabViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				3086E7791D798218008FA775 /* Launch Screen.storyboard */,
+				30A24E991E312A030026EE51 /* ViewController.h */,
+				30A24E9A1E312A030026EE51 /* ViewController.m */,
 			);
 			name = Example;
 			path = MultiRowUITabBar;
@@ -395,7 +400,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* DSAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* DSViewController.m in Sources */,
+				6003F5A7195388D20070C39A /* DSTabViewController.m in Sources */,
+				30A24E9B1E312A030026EE51 /* ViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
