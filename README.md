@@ -1,4 +1,17 @@
-# Currently Re-Architecting this repo and adding CocoaPods support. Check back for updates.
+# Currently Re-Architecting this repo and adding CocoaPods support.
+## Implemented
+1. Basic functionality is done.
+2. Added Cocoa pods Installation.
+3. Removed all the manual setup. All you have to do is subclass and override methods.
+
+## TODO:
+1. Expose UI points to customise.
+2. Update ReadMe to use the library.
+3. Add Animations for menu
+
+
+
+
 
 # MultiRowUITabBar
 Custom UITabBarController for iOS. Provides multiple rows of tab bar items on click of "More".
