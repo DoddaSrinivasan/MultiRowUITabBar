@@ -41,8 +41,6 @@
         return NO;
     }
     
-    [self hideMenu];
-    
     return YES;
 }
 
