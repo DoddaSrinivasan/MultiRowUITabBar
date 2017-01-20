@@ -10,15 +10,22 @@
 #import "DSMenuItem.h"
 
 @protocol DSMenuViewDelegate <NSObject>
-    -(void)hideMenu;
     -(void)selectTab:(int)index;
 
     -(NSInteger)numberOfMenuItems;
     -(void)setMenuItem:(DSMenuItem *)menuItem forIndex:(NSUInteger)index;
 @end
 
-
+IB_DESIGNABLE
 @interface DSMenu : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (assign) int selectedIndex;
+@property (strong, nonatomic) IBInspectable UIColor *overlayColor;
+@property (strong, nonatomic) IBInspectable UIColor *menuBackgroundColor;
+@property (strong, nonatomic) IBInspectable UIColor *selectedBackgroundColor;
+@property (strong, nonatomic) IBInspectable UIColor *selectedTint;
+@property (strong, nonatomic) IBInspectable UIColor *normalTint;
+@property (strong, nonatomic) IBInspectable NSString *closeText;
 
 @property BOOL isShown;
 @property(nonatomic) NSObject <DSMenuViewDelegate> *delegate;
@@ -27,4 +34,8 @@
 -(void)setColumns:(int)columns;
 -(void)setMenuItemHeight:(int)height;
 -(void)reloadData;
+
+-(void)showMenu:(CGRect)frame;
+-(void)hideMenu;
+
 @end

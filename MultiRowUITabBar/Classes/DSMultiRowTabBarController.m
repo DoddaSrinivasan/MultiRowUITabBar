@@ -57,7 +57,13 @@
     NSMutableArray<UIViewController *> *viewControllers = [[NSMutableArray alloc] init];
     for(int i=0; i < self.numberOfTabsPerRow; i++){
         UIViewController *viewController = [self viewControllerForIndex:i];
+        
         UITabBarItem *tabBarItem = [self tabBarItemForIndex:i];
+        tabBarItem.image = [tabBarItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        if(i+1 == self.numberOfTabsPerRow){
+            tabBarItem.title = @"MORE";
+        }
         viewController.tabBarItem = tabBarItem;
         
         [viewControllers addObject:viewController];
@@ -111,9 +117,8 @@
 }
 
 -(void)showMenu{
-    self.menu.frame = self.view.frame;
-    self.menu.hidden = NO;
     [self.menu reloadData];
+    [self.menu showMenu:self.view.frame];
 }
 
 -(void)syncMenu{
@@ -123,16 +128,20 @@
 #pragma mark - Menu Delegate Methods
 
 -(void)hideMenu{
-    self.menu.hidden = YES;
-    CGRect frame = self.view.frame;
-    frame.size.height = 0;
-    self.menu.frame = frame;
+    [self.menu hideMenu];
 }
 
 -(void)selectTab:(int)index{
-    if(index > [self numberOfTabsPerRow]){
+    if(index >= [self numberOfTabsPerRow]-1){
         NSMutableArray *existingViewControllers = [[self viewControllers] mutableCopy];
-        [existingViewControllers replaceObjectAtIndex:([self numberOfTabsPerRow] - 1) withObject:[self viewControllerForIndex:index]];
+        
+        UIViewController *lastViewController = [existingViewControllers lastObject];
+        UIViewController *controllerToReplace = [self viewControllerForIndex:index];
+        controllerToReplace.tabBarItem = lastViewController.tabBarItem;
+        
+        [existingViewControllers replaceObjectAtIndex:([self numberOfTabsPerRow] - 1)
+                                           withObject:controllerToReplace];
+        
         [self setViewControllers:existingViewControllers animated:NO];
         self.selectedIndex = [self numberOfTabsPerRow] -1;
     }else{
