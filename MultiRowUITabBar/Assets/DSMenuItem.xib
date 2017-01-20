@@ -26,7 +26,7 @@
                             <size key="shadowOffset" width="0.0" height="0.0"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="CXb-Ua-vCT" firstAttribute="leading" secondItem="FZ0-jh-pEt" secondAttribute="leading" id="1fs-Lj-spO"/>
                         <constraint firstItem="Bjo-Qf-SXU" firstAttribute="leading" secondItem="FZ0-jh-pEt" secondAttribute="leading" id="EQU-VK-lPD"/>
@@ -43,7 +43,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Zng-sq-Dm8" firstAttribute="top" secondItem="FZ0-jh-pEt" secondAttribute="bottom" id="0nR-7d-g6g"/>
                 <constraint firstItem="FZ0-jh-pEt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Dnh-fj-FsY"/>

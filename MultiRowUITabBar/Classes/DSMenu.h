@@ -36,6 +36,6 @@ IB_DESIGNABLE
 -(void)reloadData;
 
 -(void)showMenu:(CGRect)frame;
--(void)hideMenu;
+-(void)hideMenuByChangingIndex:(BOOL)shouldChange;
 
 @end

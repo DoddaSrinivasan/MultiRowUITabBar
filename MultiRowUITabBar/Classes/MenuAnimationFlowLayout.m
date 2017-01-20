@@ -29,7 +29,11 @@
 }
 
 -(CGFloat)alphaFor:(NSIndexPath *)indexpath{
-    if(indexpath.row < self.maxColumns-1){
+    if(indexpath.row == self.maxColumns - 1){
+        return 0;
+    }
+    
+    if(indexpath.row < self.maxColumns){
         return 1;
     }else{
         return 0.5;
@@ -44,19 +48,18 @@
 
 -(CGFloat)xFor:(NSIndexPath *)indexpath{
     CGRect frame = self.collectionView.frame;
+    
     int firstItemCentreX = frame.size.width/(2*self.maxColumns);
-    if(indexpath.row < self.maxColumns-1){
-        return firstItemCentreX + 2*firstItemCentreX*indexpath.row;
-    }else{
-        int column = (indexpath.row + 1)%self.maxColumns;
-        return firstItemCentreX + 2*firstItemCentreX*column;
-    }
+    int column = (indexpath.row)%self.maxColumns;
+    
+    return firstItemCentreX + 2*firstItemCentreX*column;
 }
 
 -(CGFloat)yFor:(NSIndexPath *)indexpath{
     CGRect frame = self.collectionView.frame;
-    int firstItemCentreY = frame.size.height - self.cellHeight;
-    int row = ((int)indexpath.row+1)/self.maxColumns;
+    int firstItemCentreY = frame.size.height - self.cellHeight/2;
+    
+    int row = ((int)indexpath.row)/self.maxColumns;
     return firstItemCentreY + row*self.cellHeight;
 }
 

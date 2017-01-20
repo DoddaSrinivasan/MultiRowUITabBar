@@ -20,13 +20,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _tabTitles = @[@"ONE", @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN", @"EIGHT", @"NINE", @"TEN"];
+    _tabTitles = @[@"ONE", @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN"];
     [self setupTabBar];
     [self styleTabBar];
+    
+    self.menuItemHeight = 60;
 }
 
 - (void)styleTabBar {
-    CGRect tabBarItemRect = CGRectMake(0, 0, self.tabBar.frame.size.width / 5.0, 56);
+    CGRect tabBarItemRect = CGRectMake(0, 0, self.tabBar.frame.size.width / 5.0, 60);
     
     UIGraphicsBeginImageContext(tabBarItemRect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -77,7 +79,8 @@
 -(void)setMenuItem:(DSMenuItem *)menuItem forIndex:(NSUInteger)index{
     menuItem.uiLblMenuItem.text = _tabTitles[index];
     menuItem.imgMenuItem.image = [UIImage imageNamed:@"flight"];
-    menuItem.constraintLabelBottom.constant = 1;
+    menuItem.constraintLabelBottom.constant = 3;
+    menuItem.constraintImageBottom.constant = 15;
 }
 
 -(UITabBarItem *)tabBarItemForIndex:(NSUInteger)index{

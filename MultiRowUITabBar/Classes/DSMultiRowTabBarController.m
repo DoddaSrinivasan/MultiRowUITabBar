@@ -63,6 +63,7 @@
         
         if(i+1 == self.numberOfTabsPerRow){
             tabBarItem.title = @"MORE";
+            tabBarItem.image = nil;
         }
         viewController.tabBarItem = tabBarItem;
         
@@ -117,6 +118,9 @@
 }
 
 -(void)showMenu{
+    if(self.selectedIndex < self.numberOfTabsPerRow){
+        self.menu.selectedIndex = self.selectedIndex;
+    }
     [self.menu reloadData];
     [self.menu showMenu:self.view.frame];
 }
@@ -128,7 +132,7 @@
 #pragma mark - Menu Delegate Methods
 
 -(void)hideMenu{
-    [self.menu hideMenu];
+    [self.menu hideMenuByChangingIndex:NO];
 }
 
 -(void)selectTab:(int)index{
@@ -147,8 +151,6 @@
     }else{
         self.selectedIndex = index;
     }
-    [self syncMenu];
-    [self hideMenu];
 }
 
 -(NSInteger)numberOfMenuItems{
@@ -188,6 +190,10 @@
     self.noOfTabsInRowForIPhone = 5;
     self.noOfTabsInRowForIPad = 8;
     self.menuItemHeight = 55;
+}
+
+-(void)setMenuItemHeight:(NSUInteger)menuItemHeight{
+    [self.menu setMenuItemHeight:menuItemHeight];
 }
 
 @end

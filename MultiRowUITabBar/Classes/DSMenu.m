@@ -13,6 +13,8 @@
 
 @interface DSMenu(){
     MenuAnimationFlowLayout *animatedFlowLayout;
+    NSMutableArray *animatableMenuItems;
+    int speedFactor;
 }
 
 @property int columns;
@@ -26,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMenuHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCloseWidth;
-@property (weak, nonatomic) IBOutlet UIView *viewShadow;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCollectionViewBgHeight;
 
 -(IBAction)clickedOut:(id)sender;
 -(IBAction)closeMenu:(id)sender;
@@ -55,7 +57,7 @@
 
 -(void)drawRect:(CGRect)rect{
     self.overlay.backgroundColor = _overlayColor;
-    self.menuCollectionView.backgroundColor = _menuBackgroundColor;
+    self.menuCollectionView.backgroundColor = [UIColor clearColor];
     self.viewClose.backgroundColor = _menuBackgroundColor;
     self.lblclose.text = _closeText;
 }
@@ -63,22 +65,21 @@
 #pragma mark - UI set up methods
 
 -(void)setDefaults{
+    speedFactor = 1.5;
+    
+    animatableMenuItems = [[NSMutableArray alloc] init];
+    
     animatedFlowLayout = [[MenuAnimationFlowLayout alloc] init];
+    animatedFlowLayout.minimumInteritemSpacing = 0.0f;
+    animatedFlowLayout.minimumLineSpacing = 0.0f;
+    animatedFlowLayout.sectionInset = UIEdgeInsetsMake(0,0,0,0);
+    
     _overlayColor = [UIColor colorWithWhite:0 alpha:0.5];
     _menuBackgroundColor = [UIColor whiteColor];
     _selectedTint = [UIColor redColor];
     _normalTint = [UIColor grayColor];
     _selectedBackgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     _closeText = @"CLOSE";
-}
-
-#pragma mark - UI utils
--(void)updateShadow{
-    self.constraintCloseWidth.constant = SCREEN_WIDTH/(float)self.columns;
-    self.viewShadow.layer.shadowColor = [UIColor grayColor].CGColor;
-    self.viewShadow.layer.shadowOffset = CGSizeMake(0, -3);
-    self.viewShadow.layer.shadowOpacity = 0.5;
-    self.viewShadow.layer.shadowRadius = 1.0;
 }
 
 -(void)setColumns:(int)columns{
@@ -104,11 +105,11 @@
 
 #pragma mark - Click Handlers
 - (IBAction)clickedOut:(id)sender {
-    [self hideMenu];
+    [self hideMenuByChangingIndex:NO];
 }
 
 - (IBAction)closeMenu:(id)sender {
-    [self hideMenu];
+    [self hideMenuByChangingIndex:NO];
 }
 
 #pragma mark - UICollectionView methods.
@@ -122,12 +123,11 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    [self updateShadow];
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [_delegate numberOfMenuItems];
+    return animatableMenuItems.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,15 +139,15 @@
     
     menuCell.imgMenuItem.image = [menuCell.imgMenuItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [menuCell.imgMenuItem setTintColor:_selectedIndex == (int)indexPath.row ? _selectedTint : _normalTint];
+    menuCell.backgroundColor = [UIColor clearColor];
     
     return menuCell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if(self.delegate && [self.delegate respondsToSelector:@selector(selectTab:)]){
-        [self.delegate selectTab:(int)indexPath.row];
-        _selectedIndex = (int)indexPath.row;
-    }
+    _selectedIndex = (int)indexPath.row;
+    [self.menuCollectionView reloadData];
+    [self hideMenuByChangingIndex:YES];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -159,12 +159,119 @@
 
 -(void)showMenu:(CGRect)frame{
     self.frame = frame;
+    self.overlay.alpha = 0;
+    self.viewClose.alpha = 0;
+    self.constraintCollectionViewBgHeight.constant = _menuItemHeight;
+    self.constraintCloseWidth.constant = frame.size.width/_columns;
+    [self layoutIfNeeded];
     self.hidden = NO;
-    [self reloadData];
+    
+    [self addCells];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3*speedFactor];
+    
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0.3*speedFactor];
+    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithControlPoints:0.00 :1.5 :0.00 :1.0]];
+    
+    self.constraintCollectionViewBgHeight.constant = self.constraintMenuHeight.constant;
+    self.overlay.alpha = 0.5;
+    self.viewClose.alpha = 1;
+    [self layoutIfNeeded];
+    
+    [CATransaction commit];
+    [UIView commitAnimations];
 }
 
--(void)hideMenu{
-    self.hidden = YES;
+-(void)addCells{
+    for(int i=0; i<self.delegate.numberOfMenuItems; i++){
+        [self addCell:i];
+    }
+}
+
+-(void)addCell:(int)index{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3*speedFactor];
+    
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0.3*speedFactor];
+    
+    CGFloat one =   0;
+    CGFloat two =   1.8 - 0.10*(index%_columns);
+    CGFloat three = 0 + 0.30*(index%_columns);
+    CGFloat four =  1;
+    
+    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithControlPoints:one :two :three :four]];
+    
+    [self.menuCollectionView performBatchUpdates:^{
+        [self.menuCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
+        [animatableMenuItems insertObject:@"" atIndex:index];
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    [CATransaction commit];
+    [UIView commitAnimations];
+}
+
+-(void)hideMenuByChangingIndex:(BOOL)shouldChange{
+    [self hideCells];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3*speedFactor];
+    
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0.3*speedFactor];
+    
+    [CATransaction setCompletionBlock:^{
+        if(shouldChange && self.delegate && [self.delegate respondsToSelector:@selector(selectTab:)]){
+            [self.delegate selectTab:self.selectedIndex];
+        }
+        self.hidden = YES;
+    }];
+    
+    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithControlPoints:0 :1.6 :0 :1]];
+    
+    self.constraintCollectionViewBgHeight.constant = _menuItemHeight;
+    self.overlay.alpha = 0;
+    self.viewClose.alpha = 0;
+    [self layoutIfNeeded];
+    
+    [CATransaction commit];
+    [UIView commitAnimations];
+    
+}
+
+-(void)hideCells{
+    for(int i = (int)_delegate.numberOfMenuItems-1; i >= 0; i--){
+        [self hideCell:i];
+    }
+}
+
+-(void)hideCell:(int)index{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3*speedFactor];
+    
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0.3*speedFactor];
+    
+    CGFloat one =   0;
+    CGFloat two =   1.6 - 0.10*(_columns - 1 - index%_columns);
+    CGFloat three = 0.0 + 0.30*(_columns - 1 - index%_columns);
+    CGFloat four =  1;
+    
+    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithControlPoints:one :two :three :four]];
+    
+    [self.menuCollectionView performBatchUpdates:^{
+        [self.menuCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
+        [animatableMenuItems removeLastObject];
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    [CATransaction commit];
+    [UIView commitAnimations];
 }
 
 @end
