@@ -38,6 +38,7 @@
     UIGraphicsEndImageContext();
     
     [[UITabBar appearance] setTintColor:[UIColor redColor]];
+    [[UITabBar appearance] setUnselectedItemTintColor:[UIColor grayColor]];
     [[UITabBar appearance] setSelectionIndicatorImage:image];
     [[UITabBar appearance] setBackgroundImage:image];
     
@@ -54,22 +55,6 @@
     [[UITabBarItem appearance] setTitleTextAttributes:tabbarItemTitleAttributesNormal forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:tabbarItemTitleAttributesSelected forState:UIControlStateSelected];
     [UITabBarItem appearance].titlePositionAdjustment = UIOffsetMake(0, -2);
-    
-    CGSize size = CGSizeMake(1, 5);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    CGContextRef shadowContext = UIGraphicsGetCurrentContext();
-    CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-    size_t gradientNumberOfLocations = 2;
-    CGFloat gradientLocations[2] = {0.0, 1.0};
-    CGFloat color = 88.0 / 255;
-    CGFloat gradientComponents[8] = {color, color, color, 0.01, color, color, color, 0.3};
-    CGGradientRef gradient = CGGradientCreateWithColorComponents(colorspace, gradientComponents, gradientLocations, gradientNumberOfLocations);
-    CGContextDrawLinearGradient(shadowContext, gradient, CGPointMake(0, 0), CGPointMake(0, size.height), 0);
-    UIImage *shadowImage = UIGraphicsGetImageFromCurrentImageContext();
-    CGGradientRelease(gradient);
-    CGColorSpaceRelease(colorspace);
-    UIGraphicsEndImageContext();
-    [[UITabBar appearance] setShadowImage:shadowImage];
 }
 
 -(NSUInteger)numberOfMenuItems{

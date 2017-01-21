@@ -133,12 +133,14 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DSMenuItem *menuCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DSMenuItem"
                                                                      forIndexPath:indexPath];
+    
     menuCell.uiLblMenuItem.textColor = _selectedIndex == (int)indexPath.row ? _selectedTint : _normalTint;
     
     [_delegate setMenuItem:menuCell forIndex:indexPath.row];
     
     menuCell.imgMenuItem.image = [menuCell.imgMenuItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [menuCell.imgMenuItem setTintColor:_selectedIndex == (int)indexPath.row ? _selectedTint : _normalTint];
+    
     menuCell.backgroundColor = [UIColor clearColor];
     
     return menuCell;
