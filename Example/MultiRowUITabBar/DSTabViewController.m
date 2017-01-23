@@ -8,6 +8,7 @@
 
 #import "DSTabViewController.h"
 #import "ViewController.h"
+#import "DSMenuTheme.h"
 
 @interface DSTabViewController (){
     NSArray *_tabTitles;
@@ -21,12 +22,16 @@
 {
     [super viewDidLoad];
     _tabTitles = @[@"ONE", @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN"];
-    [self setupTabBar];
     [self styleTabBar];
+    
+    [self setupTabBar];
+    
+    self.theme.overlayColor = [UIColor colorWithWhite:0 alpha:0.5];
+    self.theme.noOfTabsInRowForIPhone = 4;
 }
 
 - (void)styleTabBar {
-    CGRect tabBarItemRect = CGRectMake(0, 0, self.tabBar.frame.size.width / 5.0, 60);
+    CGRect tabBarItemRect = CGRectMake(0, 0, self.tabBar.frame.size.width / 4.0, 60);
     
     UIGraphicsBeginImageContext(tabBarItemRect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();

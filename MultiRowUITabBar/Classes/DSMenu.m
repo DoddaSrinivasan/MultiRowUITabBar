@@ -53,7 +53,8 @@
     return self;
 }
 
-- (void)drawRect:(CGRect)rect{
+- (void)setTheme:(DSMenuTheme *)theme{
+    _theme = theme;
     self.overlay.backgroundColor = _theme.overlayColor;
     self.menuCollectionView.backgroundColor = [UIColor clearColor];
     self.viewClose.backgroundColor = _theme.menuBackgroundColor;
@@ -165,7 +166,7 @@
     [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithControlPoints:0.00 :1.5 :0.00 :1.0]];
     
     self.constraintCollectionViewBgHeight.constant = self.constraintMenuHeight.constant;
-    self.overlay.alpha = 0.5;
+    self.overlay.alpha = 1;
     self.viewClose.alpha = 1;
     [self layoutIfNeeded];
     

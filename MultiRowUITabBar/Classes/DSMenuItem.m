@@ -16,7 +16,8 @@
     self.imgMenuItem.image = [self.imgMenuItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
     [self.imgMenuItem setTintColor:isActive ? theme.selectedTintColor : theme.tintColor];
-    self.backgroundColor = isActive ? theme.menuItemSelectedBackgroundColor : theme.menuItemBackgroundColor;
+    self.viewBackground.backgroundColor = isActive ? theme.menuItemSelectedBackgroundColor : theme.menuItemBackgroundColor;
+    self.backgroundColor = theme.menuBackgroundColor;
 }
 
 @end

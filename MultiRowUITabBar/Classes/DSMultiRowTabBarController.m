@@ -195,4 +195,12 @@
     return 5;
 }
 
+#pragma mark - Theme Methods
+
+- (void)setTheme:(DSMenuTheme *)theme{
+    _theme = theme;
+    [self.menu setTheme:theme];
+    [self reloadMenuItems];
+}
+
 @end

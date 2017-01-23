@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *bottomDivider;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintImageHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintImageBottom;
+@property (weak, nonatomic) IBOutlet UIView *viewBackground;
 
 -(void)styleCellFor:(DSMenuTheme *)theme andActive:(BOOL)isActive;
 

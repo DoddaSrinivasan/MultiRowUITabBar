@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DSMenu.h"
 
-IB_DESIGNABLE
-
 @class DSMenuTheme;
 @interface DSMultiRowTabBarController : UITabBarController <UITabBarControllerDelegate, DSMenuViewDelegate>
 

@@ -61,6 +61,7 @@
                 <outlet property="constraintLabelBottom" destination="JQc-Fk-Gmd" id="s5O-fW-pIc"/>
                 <outlet property="imgMenuItem" destination="CXb-Ua-vCT" id="hb8-8u-iSa"/>
                 <outlet property="uiLblMenuItem" destination="Bjo-Qf-SXU" id="lfX-Zu-JPh"/>
+                <outlet property="viewBackground" destination="FZ0-jh-pEt" id="yaA-bz-Jjd"/>
             </connections>
         </view>
     </objects>

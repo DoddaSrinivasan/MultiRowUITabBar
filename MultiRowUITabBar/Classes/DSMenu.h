@@ -17,10 +17,11 @@
 
 @end
 
+IB_DESIGNABLE
 @interface DSMenu : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (assign) int selectedIndex;
-@property (strong, nonatomic) DSMenuTheme *theme;
+@property (strong, nonatomic)IBInspectable DSMenuTheme *theme;
 
 @property BOOL isShown;
 @property(nonatomic) NSObject <DSMenuViewDelegate> *delegate;
