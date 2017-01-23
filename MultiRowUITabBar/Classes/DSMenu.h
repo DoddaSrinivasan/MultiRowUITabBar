@@ -21,10 +21,6 @@ IB_DESIGNABLE
 
 @property (assign) int selectedIndex;
 @property (strong, nonatomic) IBInspectable UIColor *overlayColor;
-@property (strong, nonatomic) IBInspectable UIColor *menuBackgroundColor;
-@property (strong, nonatomic) IBInspectable UIColor *selectedBackgroundColor;
-@property (strong, nonatomic) IBInspectable UIColor *selectedTint;
-@property (strong, nonatomic) IBInspectable UIColor *normalTint;
 @property (strong, nonatomic) IBInspectable NSString *closeText;
 
 @property BOOL isShown;

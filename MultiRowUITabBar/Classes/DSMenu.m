@@ -5,6 +5,7 @@
 //
 
 #import "DSMenu.h"
+#import "DSMenuTheme.h"
 #import "DSMenuItem.h"
 #import "MenuAnimationFlowLayout.h"
 
@@ -29,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMenuHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCloseWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCollectionViewBgHeight;
+
+@property (strong, nonatomic) DSMenuTheme *theme;
 
 -(IBAction)clickedOut:(id)sender;
 -(IBAction)closeMenu:(id)sender;
@@ -58,7 +61,7 @@
 -(void)drawRect:(CGRect)rect{
     self.overlay.backgroundColor = _overlayColor;
     self.menuCollectionView.backgroundColor = [UIColor clearColor];
-    self.viewClose.backgroundColor = _menuBackgroundColor;
+    self.viewClose.backgroundColor = [_theme menuBackgroundColor];
     self.lblclose.text = _closeText;
 }
 
@@ -75,11 +78,9 @@
     animatedFlowLayout.sectionInset = UIEdgeInsetsMake(0,0,0,0);
     
     _overlayColor = [UIColor colorWithWhite:0 alpha:0.5];
-    _menuBackgroundColor = [UIColor whiteColor];
-    _selectedTint = [UIColor redColor];
-    _normalTint = [UIColor grayColor];
-    _selectedBackgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     _closeText = @"CLOSE";
+    
+    _theme = [[DSMenuTheme alloc] init];
 }
 
 -(void)setColumns:(int)columns{
@@ -134,21 +135,13 @@
     DSMenuItem *menuCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DSMenuItem"
                                                                      forIndexPath:indexPath];
     
-    menuCell.uiLblMenuItem.textColor = _selectedIndex == (int)indexPath.row ? _selectedTint : _normalTint;
-    
     [_delegate setMenuItem:menuCell forIndex:indexPath.row];
-    
-    menuCell.imgMenuItem.image = [menuCell.imgMenuItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [menuCell.imgMenuItem setTintColor:_selectedIndex == (int)indexPath.row ? _selectedTint : _normalTint];
-    
-    menuCell.backgroundColor = [UIColor clearColor];
-    
+    [menuCell styleCellFor:_theme andActive:_selectedIndex == (int)indexPath.row];
     return menuCell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     _selectedIndex = (int)indexPath.row;
-    [self.menuCollectionView reloadData];
     [self hideMenuByChangingIndex:YES];
 }
 
@@ -220,6 +213,10 @@
 -(void)hideMenuByChangingIndex:(BOOL)shouldChange{
     [self hideCells];
     
+    if(shouldChange && self.delegate && [self.delegate respondsToSelector:@selector(selectTab:)]){
+        [self.delegate selectTab:self.selectedIndex];
+    }
+    
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3*speedFactor];
     
@@ -227,9 +224,6 @@
     [CATransaction setAnimationDuration:0.3*speedFactor];
     
     [CATransaction setCompletionBlock:^{
-        if(shouldChange && self.delegate && [self.delegate respondsToSelector:@selector(selectTab:)]){
-            [self.delegate selectTab:self.selectedIndex];
-        }
         self.hidden = YES;
     }];
     

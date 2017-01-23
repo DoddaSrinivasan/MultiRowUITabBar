@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class DSMenuTheme;
 @interface DSMenuItem : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgMenuItem;
@@ -16,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *bottomDivider;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintImageHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintImageBottom;
+
+-(void)styleCellFor:(DSMenuTheme *)theme andActive:(BOOL)isActive;
 
 @end

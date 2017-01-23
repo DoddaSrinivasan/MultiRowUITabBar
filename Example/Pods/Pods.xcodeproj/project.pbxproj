@@ -11,6 +11,8 @@
 		29EC727909F1D59E336EF11CD9AFD82E /* DSMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A00FC2E336CC35DBDE2686482A2374B8 /* DSMenuItem.m */; };
 		2BADF57C330F4AB23DDFF8B8E0515851 /* MultiRowUITabBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B31F39D100AC83F79C7FC67133B0B3 /* MultiRowUITabBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F5EE7F13701EC12200D8CF448ABB934 /* DSMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 92A6021A41597B468E87D5EADF3E5156 /* DSMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		309C4CBA1E361B96005D0762 /* DSMenuTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 309C4CB81E361B96005D0762 /* DSMenuTheme.h */; };
+		309C4CBB1E361B96005D0762 /* DSMenuTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 309C4CB91E361B96005D0762 /* DSMenuTheme.m */; };
 		30A24EB31E323C7E0026EE51 /* MenuAnimationFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A24EB11E323C7E0026EE51 /* MenuAnimationFlowLayout.h */; };
 		30A24EB41E323C7E0026EE51 /* MenuAnimationFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A24EB21E323C7E0026EE51 /* MenuAnimationFlowLayout.m */; };
 		3884D8C4AFF525882C7150DD8174EA6D /* Pods-MultiRowUITabBar_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BFD62995BC9EB676E3F6D7A46D3B807 /* Pods-MultiRowUITabBar_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,6 +56,8 @@
 		2B6D2145EB69103A1CE0BDF4844BB4DE /* Pods-MultiRowUITabBar_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MultiRowUITabBar_Example.release.xcconfig"; sourceTree = "<group>"; };
 		2E3AD74D86092A981DBB5E1D3B80E084 /* Pods-MultiRowUITabBar_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MultiRowUITabBar_Tests-umbrella.h"; sourceTree = "<group>"; };
 		2E52C49DE30FEBE934A8955289A1A17A /* Pods-MultiRowUITabBar_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MultiRowUITabBar_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		309C4CB81E361B96005D0762 /* DSMenuTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSMenuTheme.h; sourceTree = "<group>"; };
+		309C4CB91E361B96005D0762 /* DSMenuTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSMenuTheme.m; sourceTree = "<group>"; };
 		30A24EB11E323C7E0026EE51 /* MenuAnimationFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuAnimationFlowLayout.h; sourceTree = "<group>"; };
 		30A24EB21E323C7E0026EE51 /* MenuAnimationFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuAnimationFlowLayout.m; sourceTree = "<group>"; };
 		387EB3D0E3A0ADCA29CA9C80CA71649C /* DSMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DSMenu.h; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				E947A4445302E956AB20CC3EDEAB8FAA /* DSMultiRowTabBarController.m */,
 				30A24EB11E323C7E0026EE51 /* MenuAnimationFlowLayout.h */,
 				30A24EB21E323C7E0026EE51 /* MenuAnimationFlowLayout.m */,
+				309C4CB81E361B96005D0762 /* DSMenuTheme.h */,
+				309C4CB91E361B96005D0762 /* DSMenuTheme.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				2F5EE7F13701EC12200D8CF448ABB934 /* DSMenuItem.h in Headers */,
 				75851DD80C94FF22AF404DA32D088F41 /* DSMultiRowTabBarController.h in Headers */,
 				30A24EB31E323C7E0026EE51 /* MenuAnimationFlowLayout.h in Headers */,
+				309C4CBA1E361B96005D0762 /* DSMenuTheme.h in Headers */,
 				2BADF57C330F4AB23DDFF8B8E0515851 /* MultiRowUITabBar-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +412,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					666861D8A471377CE860449C38261A27 = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -467,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D96EB14F952F1F48E197322CD2C77A59 /* DSMenu.m in Sources */,
+				309C4CBB1E361B96005D0762 /* DSMenuTheme.m in Sources */,
 				29EC727909F1D59E336EF11CD9AFD82E /* DSMenuItem.m in Sources */,
 				54A70B9892A8178C15D02F071EC9FD6C /* DSMultiRowTabBarController.m in Sources */,
 				30A24EB41E323C7E0026EE51 /* MenuAnimationFlowLayout.m in Sources */,
@@ -658,6 +671,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FBBC9E3D7079C06DB1D6DB706B592CF3 /* MultiRowUITabBar.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -677,6 +691,7 @@
 				PRODUCT_NAME = MultiRowUITabBar;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -720,6 +735,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FBBC9E3D7079C06DB1D6DB706B592CF3 /* MultiRowUITabBar.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -739,6 +755,8 @@
 				PRODUCT_NAME = MultiRowUITabBar;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
