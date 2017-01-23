@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.version          = '0.1.0'
   s.summary          = 'A Sub Class of UITabCarController to show more Tab Bar items in multiple rows'
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/MultiRowUITabBar'
+  s.homepage         = 'https://github.com/DoddaSrinivasan/MultiRowUITabBar'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Dodda Srinivasan' => 'srinivasan.munna@gmail.com' }
   s.source           = { :git => 'https://github.com/DoddaSrinivasan/MultiRowUITabBar.git', :tag => s.version.to_s }
