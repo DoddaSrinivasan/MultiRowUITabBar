@@ -1,18 +1,3 @@
-# Currently Re-Architecting this repo and adding CocoaPods support.
-## Implemented
-1. Basic functionality is done.
-2. Added Cocoa pods Installation.
-3. Removed all the manual setup. All you have to do is subclass and override methods.
-
-## TODO:
-1. Expose UI points to customise.
-2. Update ReadMe to use the library.
-3. Add Animations for menu
-
-
-
-
-
 # MultiRowUITabBar
 Custom UITabBarController for iOS. Provides multiple rows of tab bar items on click of "More".
 
@@ -44,71 +29,12 @@ This custom UITabBarController provides a elegent way of showing all the tab ite
 
 #####Basic Setup
 
-In your TabBarItems.plist, add an entry for each of the view controller you want to show up in tabs:<br />
-controllerId -> storyboardId for that controller <br />
+Subclass your TabBarController with DSMultiRowTabBarController. Call ```setupTabBar``` in ``` viewDidLoad``` and override the following methods.
 
-```plist
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-  <array>
-  	<dict>
-      <key>name</key>
-      <string>vc1</string>
-      <key>icon</key>
-      <string>nothing</string>
-      <key>storyboardName</key>
-      <string>Main</string>
-      <key>controllerId</key>
-      <string>vc1</string>
-    </dict>
-    <dict>
-      <key>name</key>
-      <string>vc2</string>
-      <key>icon</key>
-      <string>nothing</string>
-      <key>storyboardName</key>
-      <string>Main</string>
-      <key>controllerId</key>
-      <string>vc2</string>
-    </dict>
-  </array>
-</plist>
 ```
+-(NSUInteger)numberOfMenuItems;
+-(void)setMenuItem:(DSMenuItem *)menuItem forIndex:(NSUInteger)index;
 
-In your UITabBarController:<br />
-```objective-c
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self setDelegate:self];
-    [self setUpTabBarForIndex:0]; //index of the tab you want to be selected
-    [self setupMenu];
-}
+-(UITabBarItem *)tabBarItemForIndex:(NSUInteger)index;
+-(UIViewController *)viewControllerForIndex:(NSUInteger)index;
 ```
-
-#####Advanced Setup
-In your UITabBarController:<br />
-```objective-c
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    self.menuBackGroundColor = [UIColor whiteColor];
-    self.menuOverLayBackGroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.6];
-    self.menuItemBackGroundColor = [UIColor whiteColor];
-    self.menuItemSelectdBackGroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:0.5];
-    self.closeButtonText = @"LESS";
-    self.moreButtonText = @"MORE";
-    self.noOfTabsInRowForIPhone = 3;
-    self.noOfTabsInRowForIPad = 5;
-    self.menuItemHeight = 60;
-
-    [self setDelegate:self];
-    [self setUpTabBarForIndex:0]; //index of the tab you want to be selected
-    [self setupMenu];
-}
-```
-
-You can also customize the MRMenu.xib and MRMenuItem.xib for the styling, but dont mess with the outlets
