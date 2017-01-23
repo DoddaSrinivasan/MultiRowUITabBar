@@ -23,8 +23,6 @@
     _tabTitles = @[@"ONE", @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN"];
     [self setupTabBar];
     [self styleTabBar];
-    
-    self.menuItemHeight = 60;
 }
 
 - (void)styleTabBar {

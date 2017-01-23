@@ -10,6 +10,10 @@
 
 @interface DSMenuTheme : NSObject
 
+@property (assign) NSInteger noOfTabsInRowForIPhone;
+@property (assign) NSInteger noOfTabsInRowForIPad;
+@property (assign) CGFloat menuItemHeight;
+
 @property (strong, nonatomic) UIColor *tintColor;
 @property (strong, nonatomic) UIColor *selectedTintColor;
 
@@ -23,5 +27,8 @@
 
 @property (strong, nonatomic) UIColor *textColor;
 @property (strong, nonatomic) UIColor *selectedTextColor;
+
+@property (strong, nonatomic) UIColor *overlayColor;
+@property (strong, nonatomic) NSString *closeText;
 
 @end

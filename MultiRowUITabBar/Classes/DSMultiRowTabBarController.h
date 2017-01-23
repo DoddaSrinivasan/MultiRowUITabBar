@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "DSMenu.h"
 
+IB_DESIGNABLE
+
+@class DSMenuTheme;
 @interface DSMultiRowTabBarController : UITabBarController <UITabBarControllerDelegate, DSMenuViewDelegate>
 
-@property NSUInteger menuItemHeight;
-@property NSUInteger noOfTabsInRowForIPhone;
-@property NSUInteger noOfTabsInRowForIPad;
+@property (strong, nonatomic) DSMenuTheme *theme;
 
 -(void)setupTabBar;
 

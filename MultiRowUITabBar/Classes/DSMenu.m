@@ -9,8 +9,6 @@
 #import "DSMenuItem.h"
 #import "MenuAnimationFlowLayout.h"
 
-#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
-#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 
 @interface DSMenu(){
     MenuAnimationFlowLayout *animatedFlowLayout;
@@ -25,13 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblclose;
 @property (weak, nonatomic) IBOutlet UIView *viewClose;
 
-
 @property (weak, nonatomic) IBOutlet UICollectionView *menuCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintMenuHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCloseWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintCollectionViewBgHeight;
-
-@property (strong, nonatomic) DSMenuTheme *theme;
 
 -(IBAction)clickedOut:(id)sender;
 -(IBAction)closeMenu:(id)sender;
@@ -58,16 +53,16 @@
     return self;
 }
 
--(void)drawRect:(CGRect)rect{
-    self.overlay.backgroundColor = _overlayColor;
+- (void)drawRect:(CGRect)rect{
+    self.overlay.backgroundColor = _theme.overlayColor;
     self.menuCollectionView.backgroundColor = [UIColor clearColor];
-    self.viewClose.backgroundColor = [_theme menuBackgroundColor];
-    self.lblclose.text = _closeText;
+    self.viewClose.backgroundColor = _theme.menuBackgroundColor;
+    self.lblclose.text = _theme.closeText;
 }
 
 #pragma mark - UI set up methods
 
--(void)setDefaults{
+- (void)setDefaults{
     speedFactor = 1.5;
     
     animatableMenuItems = [[NSMutableArray alloc] init];
@@ -77,34 +72,25 @@
     animatedFlowLayout.minimumLineSpacing = 0.0f;
     animatedFlowLayout.sectionInset = UIEdgeInsetsMake(0,0,0,0);
     
-    _overlayColor = [UIColor colorWithWhite:0 alpha:0.5];
-    _closeText = @"CLOSE";
-    
     _theme = [[DSMenuTheme alloc] init];
 }
 
--(void)setColumns:(int)columns{
+- (void)setColumns:(int)columns{
     _columns = columns;
     int requiredRows = ceilf(([_delegate numberOfMenuItems]+1)/(CGFloat)columns);
     self.constraintMenuHeight.constant = requiredRows*_menuItemHeight;
     [self setMenuAnimationConfig];
 }
 
--(void)setMenuItemHeight:(int)height{
+- (void)setMenuItemHeight:(int)height{
     _menuItemHeight = height;
     int requiredRows = ceilf(([_delegate numberOfMenuItems]+1)/(CGFloat)_columns);
     self.constraintMenuHeight.constant = requiredRows*height;
     [self setMenuAnimationConfig];
 }
 
--(void)setMenuAnimationConfig{
-    animatedFlowLayout.cellHeight = _menuItemHeight;
-    animatedFlowLayout.maxColumns = _columns;
-    [self.menuCollectionView setCollectionViewLayout:animatedFlowLayout animated:YES];
-    [animatedFlowLayout invalidateLayout];
-}
-
 #pragma mark - Click Handlers
+
 - (IBAction)clickedOut:(id)sender {
     [self hideMenuByChangingIndex:NO];
 }
@@ -115,7 +101,7 @@
 
 #pragma mark - UICollectionView methods.
 
--(void)reloadData{
+-(void)reloadMenu{
     [self.menuCollectionView reloadData];
 }
 
@@ -131,7 +117,8 @@
     return animatableMenuItems.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DSMenuItem *menuCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DSMenuItem"
                                                                      forIndexPath:indexPath];
     
@@ -150,9 +137,16 @@
     return CGSizeMake(menuItemWidth, self.menuItemHeight);
 }
 
-#pragma mark - Show & Hide Menu
+#pragma mark - Show & Hide Menu Animation
 
--(void)showMenu:(CGRect)frame{
+- (void)setMenuAnimationConfig{
+    animatedFlowLayout.cellHeight = _theme.menuItemHeight;
+    animatedFlowLayout.maxColumns = _columns;
+    [self.menuCollectionView setCollectionViewLayout:animatedFlowLayout animated:YES];
+    [animatedFlowLayout invalidateLayout];
+}
+
+- (void)showMenu:(CGRect)frame{
     self.frame = frame;
     self.overlay.alpha = 0;
     self.viewClose.alpha = 0;

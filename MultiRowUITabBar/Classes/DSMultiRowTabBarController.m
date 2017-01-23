@@ -7,9 +7,10 @@
 //
 
 #import "DSMultiRowTabBarController.h"
+#import "DSMenuTheme.h"
 
-#define IDIOM    UI_USER_INTERFACE_IDIOM()
-#define IPAD     UIUserInterfaceIdiomPad
+#define IDIOM  UI_USER_INTERFACE_IDIOM()
+#define IPAD   UIUserInterfaceIdiomPad
 
 @interface DSMultiRowTabBarController ()
 
@@ -21,11 +22,26 @@
 
 #pragma mark - Initial Set up
 
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    [self setDefaults];
+    return self;
+}
+
+- (id)init{
+    self = [super init];
+    [self setDefaults];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupDefaults];
     [self setDelegate:self];
     [self setupMenu];
+}
+
+- (void)setDefaults{
+    self.theme = [[DSMenuTheme alloc] init];
 }
 
 #pragma mark - TabBar Setup and delegate methods
@@ -50,6 +66,8 @@
         [self syncMenu];
     }
 }
+
+#pragma mark - TabBar setup methods
 
 -(void)setupTabBar{
     NSMutableArray<UIViewController *> *viewControllers = [[NSMutableArray alloc] init];
@@ -91,6 +109,7 @@
     NSString *bundlePath = [[NSBundle bundleForClass:[DSMultiRowTabBarController class]] pathForResource:@"MultiRowUITabBar" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     self.menu = [[bundle loadNibNamed:@"DSMenu" owner:self options:nil] objectAtIndex:0];
+    self.menu.theme = _theme;
     [self.menu registerNib:[UINib nibWithNibName:@"DSMenuItem" bundle:bundle] withReuseIdentifier:@"DSMenuItem"];
 
     self.menu.delegate = self;
@@ -107,7 +126,7 @@
     columns = columns > (int)columns ? (int)columns + 1 : columns;
     
     [self.menu setColumns:[self numberOfTabsPerRow]];
-    [self.menu setMenuItemHeight:[self menuItemheight]];
+    [self.menu setMenuItemHeight:_theme.menuItemHeight];
     [self syncMenu];
     
     CGRect frame = self.view.frame;
@@ -119,19 +138,15 @@
     if(self.selectedIndex < self.numberOfTabsPerRow){
         self.menu.selectedIndex = self.selectedIndex;
     }
-    [self.menu reloadData];
+    [self syncMenu];
     [self.menu showMenu:self.view.frame];
 }
 
 -(void)syncMenu{
-    [self.menu reloadData];
+    [self.menu reloadMenu];
 }
 
 #pragma mark - Menu Delegate Methods
-
--(void)hideMenu{
-    [self.menu hideMenuByChangingIndex:NO];
-}
 
 -(void)selectTab:(int)index{
     if(index >= [self numberOfTabsPerRow]-1){
@@ -168,13 +183,9 @@
 
 -(int)numberOfTabsPerRow{
     if(IDIOM == IPAD){
-        return (int)self.noOfTabsInRowForIPad > 8 ? 8 : (int)self.noOfTabsInRowForIPad;
+        return _theme.noOfTabsInRowForIPad > self.maxTabsForDevice ? self.maxTabsForDevice : _theme.noOfTabsInRowForIPad;
     }
-    return (int)self.noOfTabsInRowForIPhone > 5 ? 5 : (int)self.noOfTabsInRowForIPhone;
-}
-
--(int)menuItemheight{
-    return (int)self.menuItemHeight;
+    return _theme.noOfTabsInRowForIPhone > self.maxTabsForDevice ? self.maxTabsForDevice : _theme.noOfTabsInRowForIPhone;
 }
 
 -(int)maxTabsForDevice{
@@ -182,16 +193,6 @@
         return 8;
     }
     return 5;
-}
-
--(void)setupDefaults{
-    self.noOfTabsInRowForIPhone = 5;
-    self.noOfTabsInRowForIPad = 8;
-    self.menuItemHeight = 55;
-}
-
--(void)setMenuItemHeight:(NSUInteger)menuItemHeight{
-    [self.menu setMenuItemHeight:menuItemHeight];
 }
 
 @end
