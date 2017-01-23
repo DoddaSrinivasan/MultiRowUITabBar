@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) UIColor *overlayColor;
 @property (strong, nonatomic) NSString *closeText;
+@property (strong, nonatomic) NSString *menuText;
 
 
 -(UIColor *)tintColor;

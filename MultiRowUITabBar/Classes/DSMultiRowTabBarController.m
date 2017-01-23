@@ -78,7 +78,7 @@
         tabBarItem.image = [tabBarItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
         if(i+1 == self.numberOfTabsPerRow){
-            tabBarItem.title = @"MORE";
+            tabBarItem.title = _theme.menuText;
             tabBarItem.image = nil;
         }
         viewController.tabBarItem = tabBarItem;

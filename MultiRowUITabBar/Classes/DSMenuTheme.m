@@ -31,6 +31,7 @@ const CGFloat DEFAULT_MENU_ITEM_HEIGHT = 55.0;
     _menuItemSelectedBackgroundColor = [UIColor whiteColor];
     _overlayColor = [UIColor colorWithWhite:0 alpha:0.5];
     _closeText = @"CLOSE";
+    _menuText = @"MORE";
 }
 
 

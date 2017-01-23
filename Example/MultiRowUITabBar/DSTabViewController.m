@@ -21,17 +21,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _tabTitles = @[@"ONE", @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN"];
+    _tabTitles = @[@"ONE", @"TWO", @"THREE", @"FOUR", @"FIVE", @"SIX", @"SEVEN", @"EIGHT", @"NINE"];
     [self styleTabBar];
     
     [self setupTabBar];
     
     self.theme.overlayColor = [UIColor colorWithWhite:0 alpha:0.5];
-    self.theme.noOfTabsInRowForIPhone = 4;
+    self.theme.noOfTabsInRowForIPhone = 5;
+    self.theme.menuItemHeight = 60.0;
 }
 
 - (void)styleTabBar {
-    CGRect tabBarItemRect = CGRectMake(0, 0, self.tabBar.frame.size.width / 4.0, 60);
+    CGRect tabBarItemRect = CGRectMake(0, 0, self.tabBar.frame.size.width / 5.0, 60);
     
     UIGraphicsBeginImageContext(tabBarItemRect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -40,13 +41,13 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    [[UITabBar appearance] setTintColor:[UIColor blueColor]];
-    [[UITabBar appearance] setUnselectedItemTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setTintColor:[UIColor redColor]];
+    [[UITabBar appearance] setUnselectedItemTintColor:[UIColor grayColor]];
     [[UITabBar appearance] setSelectionIndicatorImage:image];
     [[UITabBar appearance] setBackgroundImage:image];
     
     NSDictionary *tabbarItemTitleAttributesNormal = @{
-                                                      NSForegroundColorAttributeName : [UIColor blackColor],
+                                                      NSForegroundColorAttributeName : [UIColor grayColor],
                                                       NSFontAttributeName : [UIFont systemFontOfSize:10],
                                                       };
     
