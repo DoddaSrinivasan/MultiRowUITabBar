@@ -5,7 +5,7 @@ iOS provides "more" button when the number of tab items are more than 5 (8 for i
 
 This custom UITabBarController provides a elegent way of showing all the tab items in a multi row view, letting the user to switch between any screen any time.
 
-##Features
+## Features
 
 - Universal device support (iPhone + iPad)
 - Multiple Storyboard support
@@ -16,24 +16,31 @@ This custom UITabBarController provides a elegent way of showing all the tab ite
 
 ![](http://res.cloudinary.com/dm6lqaxjt/image/upload/v1485178860/MultiRow_TabBar.gif)
 
-##Demo
+## Demo
 
 1. Git clone or download the project.
 2. Go to Example directory and run pod install.
 3. Open the MultiRowUITabBar.xcworkspace in xCode.
 4. Run the xCode project
 
-##Installation
+## Installation
 
-####Manual Installation
+#### Manual Installation
 
-1. Download the zip
-2. Add the files under MultiRowTabBar into your project.
-3. Extend your UITabBarController from MultiRowTabBarController
+- Download the zip
+- Add the files under MultiRowTabBar into your project.
+- Extend your UITabBarController from MultiRowTabBarController
 
-##Usage
+#### Cocoa pod installation
 
-#####Basic Setup
+UIStyleKit is available through CocoaPods. To install it, simply add the following line to your Podfile:
+```ruby
+pod "MultiRowUITabBar"
+```
+
+## Usage
+
+##### Basic Setup
 
 Subclass your TabBarController with DSMultiRowTabBarController. Call ```[self setupTabBar]``` in ``` viewDidLoad``` and override the following methods.
 
